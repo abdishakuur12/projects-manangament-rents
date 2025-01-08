@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Real Estate Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+        .navbar {
+            background-color: #2b2e4a;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .signup-section {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .signup-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .signup-form .form-control {
+            border-radius: 5px;
+        }
+        .footer {
+            background-color: #2b2e4a;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #2b2e4a;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1f1f3b;
+        }
+        .form-check-input:checked {
+            background-color: #2b2e4a;
+            border-color: #2b2e4a;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            const fullName = document.getElementById("fullName");
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirmPassword");
+            
+            const nameRegex = /^[a-zA-Z ]+$/;
+            if (!nameRegex.test(fullName.value)) {
+                alert("Full Name must contain only letters and spaces.");
+                event.preventDefault();
+                return;
+            }
+
+            if (password.value !== confirmPassword.value) {
+                alert("Passwords do not match.");
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Sign Up Section -->
+    <section class="signup-section">
+        <form class="signup-form" action="../php/signup.php" method="POST" onsubmit="validateForm(event)">
+            <div class="text-center mb-4">
+                <h1 class="fw-bold text-primary">Create an Account</h1>
+                <p class="lead">Join us and find the home of your dreams.</p>
+            </div>
+            <div class="mb-2">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Enter your full name" required>
+            </div>
+            <div class="mb-2">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-2">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="mb-2">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="terms" required>
+                <label class="form-check-label" for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            </div>
+        </form>
+        
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Real Estate Management System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
